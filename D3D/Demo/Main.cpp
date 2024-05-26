@@ -7,8 +7,8 @@
 
 void Main::Initialize()
 {
-	Push(new CubeMapDemo());
-	//Push(new GetHeightDemo());
+	//Push(new CubeMapDemo());
+	Push(new GetHeightDemo());
 }
 
 

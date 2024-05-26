@@ -14,6 +14,9 @@ public:
 	virtual void ResizeScreen() override {};
 
 private:
+	void CreateStaticMesh();
+
+private:
 	struct Vertex
 	{
 		Vector3 Position;
@@ -22,9 +25,12 @@ private:
 
 private:
 	Shader* shader;
+	Shader* cubeShader;
 	Terrain* terrain;
 	
-	Shader* triShader;
-	ID3D11Buffer* vertexBuffer;
+	StaticMesh_Cube* cube;
+	//Shader* triShader;
+	//ID3D11Buffer* vertexBuffer;
+
 	Vector3 position = Vector3(0, 0, 0);
 };

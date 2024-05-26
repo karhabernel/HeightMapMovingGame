@@ -61,11 +61,21 @@ void CubeMapDemo::Update()
 	quad->Pass(bWire ? 1 : 0);
 	plane->Pass(bWire ? 1 : 0);
 	cube->Pass(bWire ? 1 : 0);
+	cube2->Pass(bWire ? 1 : 0);
 
 	quad->Update();
 	plane->Update();
 
 	cube->Update();
+
+	static float rotateX = 0.f;
+	static float rotateY = 0.f;
+	static float rotateZ = 0.f;
+	ImGui::InputFloat("RotatePitch", &rotateX);
+	ImGui::InputFloat("RotateYaw", &rotateY);
+	ImGui::InputFloat("RotateRoll", &rotateZ);
+	cube2->GetTransform()->Rotation(rotateX, rotateY, rotateZ);
+
 	cube2->Update();
 
 	for (UINT i = 0; i < 10; i++)
