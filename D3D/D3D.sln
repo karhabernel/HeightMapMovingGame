@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Framework", "Framework\Framework.vcxproj", "{CCA8113A-336A-47B3-A9FF-B04E6EA73448}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Demo", "Demo\Demo.vcxproj", "{5773D23F-5E33-43C9-8FD9-99B1C7EED35A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CCA8113A-336A-47B3-A9FF-B04E6EA73448} = {CCA8113A-336A-47B3-A9FF-B04E6EA73448}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Shaders", "_Shaders", "{F08E145E-931C-464E-AEA9-509D6C889E2F}"
+	ProjectSection(SolutionItems) = preProject
+		_Shaders\00_Global.fx = _Shaders\00_Global.fx
+		_Shaders\01_Line.fx = _Shaders\01_Line.fx
+		_Shaders\02_LineColor.fx = _Shaders\02_LineColor.fx
+		_Shaders\03_Pass.fx = _Shaders\03_Pass.fx
+		_Shaders\04_Plane.fx = _Shaders\04_Plane.fx
+		_Shaders\05_World.fx = _Shaders\05_World.fx
+		_Shaders\06_VertexID.fx = _Shaders\06_VertexID.fx
+		_Shaders\07_Grid.fx = _Shaders\07_Grid.fx
+		_Shaders\08_Texture.fx = _Shaders\08_Texture.fx
+		_Shaders\09_SamplerState.fx = _Shaders\09_SamplerState.fx
+		_Shaders\10_Terrain.fx = _Shaders\10_Terrain.fx
+		_Shaders\11_DebugLine.fx = _Shaders\11_DebugLine.fx
+		_Shaders\12_Tri.fx = _Shaders\12_Tri.fx
+		_Shaders\13_StaticMesh.fx = _Shaders\13_StaticMesh.fx
+		_Shaders\14_CubeMap.fx = _Shaders\14_CubeMap.fx
+		_Shaders\15_Sky.fx = _Shaders\15_Sky.fx
+		_Shaders\16_SkeletalMesh.fx = _Shaders\16_SkeletalMesh.fx
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCA8113A-336A-47B3-A9FF-B04E6EA73448}.Debug|x86.ActiveCfg = Debug|Win32
+		{CCA8113A-336A-47B3-A9FF-B04E6EA73448}.Debug|x86.Build.0 = Debug|Win32
+		{CCA8113A-336A-47B3-A9FF-B04E6EA73448}.Release|x86.ActiveCfg = Release|Win32
+		{CCA8113A-336A-47B3-A9FF-B04E6EA73448}.Release|x86.Build.0 = Release|Win32
+		{5773D23F-5E33-43C9-8FD9-99B1C7EED35A}.Debug|x86.ActiveCfg = Debug|Win32
+		{5773D23F-5E33-43C9-8FD9-99B1C7EED35A}.Debug|x86.Build.0 = Debug|Win32
+		{5773D23F-5E33-43C9-8FD9-99B1C7EED35A}.Release|x86.ActiveCfg = Release|Win32
+		{5773D23F-5E33-43C9-8FD9-99B1C7EED35A}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5F6F23F7-1F7D-4224-8A0C-82A63C795D55}
+	EndGlobalSection
+EndGlobal
