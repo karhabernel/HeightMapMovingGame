@@ -61,6 +61,10 @@ void GetHeightDemo::Update()
 		static float intensity = 2.5f;
 		ImGui::SliderFloat("Intensity", &intensity, 1, 10);
 		terrain->Intensity(intensity);
+
+		ImGui::SliderFloat3("Light Direction", lightDirection, -1, 1);
+		terrain->SetLightDirection(lightDirection);
+		shader->AsVector("LightDirection")->SetFloatVector(lightDirection);
 	}
 
 	//Tri Key Input
@@ -78,6 +82,10 @@ void GetHeightDemo::Update()
 		//position.y = terrain->GetHeightByInterp(position) + 1;
 		position.y = terrain->GetHeightByRaycast(position) + 1;
 		cube->GetTransform()->Position(position);
+		
+		// Get Rotation
+		Vector3 normal = terrain->GetNormalData(position);
+		cube->GetTransform()->Rotation(normal);
 
 		Matrix R, T;
 		D3DXMatrixRotationX(&R, D3DX_PI);

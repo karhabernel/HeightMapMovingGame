@@ -24,8 +24,7 @@ Terrain::~Terrain()
 
 void Terrain::Update()
 {
-	static Vector3 lightDirection = Vector3(-1, -1, 1);
-	ImGui::SliderFloat3("Light Direction", lightDirection, -1, 1);
+
 	shader->AsVector("LightDirection")->SetFloatVector(lightDirection);
 
 	Super::Update();
@@ -122,6 +121,29 @@ float Terrain::GetHeightByRaycast(Vector3 position)
 	return result.y;
 }
 
+Vector3 Terrain::GetNormalData(Vector3 position)
+{
+	UINT x = (UINT)position.x;
+	UINT z = (UINT)position.z;
+
+	if (x < 0 || x > width - 2) return Vector3(0,0,0);
+	if (z < 0 || z > height - 2) return Vector3(0, 0, 0);
+
+	UINT index[4];
+	index[0] = width * z + x;
+	index[1] = width * (z + 1) + x;
+	index[2] = width * z + (x + 1);
+	index[3] = width * (z + 1) + (x + 1);
+
+	Vector3 p[4];
+	for (UINT i = 0; i < 4; i++)
+		p[i] = vertices[index[i]].Normal;
+
+	//test
+	//todo : 네 index의 노멀 평균을 구해서 리턴하라
+	return p[0];
+}
+
 void Terrain::visibleNormal()
 {
 	//Draw Debug Normal
@@ -141,6 +163,16 @@ void Terrain::visibleNormal()
 			}
 		}
 	}
+}
+
+void Terrain::SetLightDirection(Vector3 direction)
+{
+	lightDirection = direction;
+}
+
+Vector3 Terrain::GetLightDirection()
+{
+	return lightDirection;
 }
 
 void Terrain::BaseMap(wstring file)

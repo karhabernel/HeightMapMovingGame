@@ -11,8 +11,11 @@ public:
 
 	float GetHeightByInterp(Vector3 position);
 	float GetHeightByRaycast(Vector3 position);
+	Vector3 GetNormalData(Vector3 position);
 
 	void visibleNormal();
+	void SetLightDirection(Vector3 direction);
+	Vector3 GetLightDirection();
 
 	void BaseMap(wstring file);
 	void LayerMap(wstring file);
@@ -52,4 +55,5 @@ private:
 
 	bool bVisibleNormal = false;
 	UINT vertexInterval = 3;
+	Vector3 lightDirection = Vector3(-1, -1, 1);
 };
