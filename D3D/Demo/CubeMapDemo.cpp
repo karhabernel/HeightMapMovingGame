@@ -71,9 +71,9 @@ void CubeMapDemo::Update()
 	static float rotateX = 0.f;
 	static float rotateY = 0.f;
 	static float rotateZ = 0.f;
-	ImGui::InputFloat("RotatePitch", &rotateX);
-	ImGui::InputFloat("RotateYaw", &rotateY);
-	ImGui::InputFloat("RotateRoll", &rotateZ);
+	ImGui::SliderFloat("RotatePitch", &rotateX, 0.f, 36.f);
+	ImGui::SliderFloat("RotateYaw", &rotateY, 0.f, 36.f);
+	ImGui::SliderFloat("RotateRoll", &rotateZ, 0.f, 36.f);
 	cube2->GetTransform()->Rotation(rotateX, rotateY, rotateZ);
 
 	cube2->Update();

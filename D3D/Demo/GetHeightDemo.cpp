@@ -125,4 +125,5 @@ void GetHeightDemo::CreateStaticMesh()
 	cube->GetTransform()->Position(0, 25, 0);
 	cube->GetTransform()->Scale(2, 2, 2);
 	cube->DiffuseMap(L"Floor.png");
+	// Todo. DiffuseMap Error?
 }

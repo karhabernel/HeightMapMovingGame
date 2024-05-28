@@ -136,12 +136,21 @@ Vector3 Terrain::GetNormalData(Vector3 position)
 	index[3] = width * (z + 1) + (x + 1);
 
 	{
-	//todo : 네 index의 노멀 평균을 구해서 리턴하라
-	Vector3 p[4];
-	for (UINT i = 0; i < 4; i++)
-		p[i] = vertices[index[i]].Normal;
+		Vector3 p[4];
+		for (UINT i = 0; i < 4; i++)
+			p[i] = vertices[index[i]].Normal;
+		// normal y, z를 사용해서 pitch회전에 대한 atan2 
+
+		float pitch = atan2(p[0].y, p[0].z);
+		float pitch2 = atan2(p[1].y, p[1].z);
+		float pitch3 = atan2(p[2].y, p[2].z);
+		float pitch4 = atan2(p[3].y, p[3].z);
+		//float roll = atan2(p[0].y, p[0].x);
+
+		pitch = (pitch + pitch2 + pitch3 + pitch4) / 4;
+
+		return Vector3(-pitch, 0, 0);
 	}
-	//test
 	 
 
 	
