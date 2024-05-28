@@ -126,7 +126,7 @@ Vector3 Terrain::GetNormalData(Vector3 position)
 	UINT x = (UINT)position.x;
 	UINT z = (UINT)position.z;
 
-	if (x < 0 || x > width - 2) return Vector3(0,0,0);
+	if (x < 0 || x > width - 2) return Vector3(0, 0, 0);
 	if (z < 0 || z > height - 2) return Vector3(0, 0, 0);
 
 	UINT index[4];
@@ -135,13 +135,17 @@ Vector3 Terrain::GetNormalData(Vector3 position)
 	index[2] = width * z + (x + 1);
 	index[3] = width * (z + 1) + (x + 1);
 
+	{
+	//todo : 네 index의 노멀 평균을 구해서 리턴하라
 	Vector3 p[4];
 	for (UINT i = 0; i < 4; i++)
 		p[i] = vertices[index[i]].Normal;
-
+	}
 	//test
-	//todo : 네 index의 노멀 평균을 구해서 리턴하라
-	return p[0];
+	 
+
+	
+	return Vector3(0.f, 0.f, 0.f);
 }
 
 void Terrain::visibleNormal()
