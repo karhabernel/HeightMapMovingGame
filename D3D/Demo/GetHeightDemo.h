@@ -32,6 +32,6 @@ private:
 	//Shader* triShader;
 	//ID3D11Buffer* vertexBuffer;
 
-	Vector3 position = Vector3(0, 0, 0);
+	Vector3 position = Vector3(105, 0, 100);
 	Vector3 lightDirection = Vector3(-1, -1, 1);
 };

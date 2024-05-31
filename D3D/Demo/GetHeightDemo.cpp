@@ -65,6 +65,7 @@ void GetHeightDemo::Update()
 		ImGui::SliderFloat3("Light Direction", lightDirection, -1, 1);
 		terrain->SetLightDirection(lightDirection);
 		shader->AsVector("LightDirection")->SetFloatVector(lightDirection);
+		cubeShader->AsVector("LightDirection")->SetFloatVector(lightDirection);
 	}
 
 	//Tri Key Input
@@ -122,7 +123,6 @@ void GetHeightDemo::Render()
 void GetHeightDemo::CreateStaticMesh()
 {
 	cube = new StaticMesh_Cube(cubeShader);
-	cube->GetTransform()->Position(0, 25, 0);
 	cube->GetTransform()->Scale(2, 2, 2);
 	cube->DiffuseMap(L"Floor.png");
 	// Todo. DiffuseMap Error?
