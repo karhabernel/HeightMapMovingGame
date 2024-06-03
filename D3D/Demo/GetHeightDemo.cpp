@@ -4,7 +4,7 @@
 void GetHeightDemo::Initialize()
 {
 	Context::Get()->GetCamera()->RotationDegree(30, 0, 0);
-	Context::Get()->GetCamera()->Position(136, 129, -170);
+	Context::Get()->GetCamera()->Position(110, 45, 20);
 	((Freedom*)Context::Get()->GetCamera())->Speed(50, 10);
 
 	shader = new Shader(L"10_Terrain.fxo");
@@ -13,6 +13,8 @@ void GetHeightDemo::Initialize()
 	terrain->BaseMap(L"Terrain/Dirt2.png");
 	terrain->LayerMap(L"Terrain/Cliff (Layered Rock).jpg");
 	terrain->AlphaMap(L"Terrain/Gray256.png");
+
+
 
 	/*triShader = new Shader(L"12_Tri.fxo");
 	Vertex vertices[3];
@@ -66,6 +68,20 @@ void GetHeightDemo::Update()
 		terrain->SetLightDirection(lightDirection);
 		shader->AsVector("LightDirection")->SetFloatVector(lightDirection);
 		cubeShader->AsVector("LightDirection")->SetFloatVector(lightDirection);
+
+		static int base;
+		static int layer;
+		static int cube;
+		ImGui::SliderInt("BaseMap", &base, 0, 4);
+		ImGui::SliderInt("LayerMap", &layer, 0, 4);
+		ImGui::SliderInt("Cube", &cube, 0, 7);
+		
+		if (ImGui::Button("Apply"))
+		{
+			ChangeTexture((UINT)base, (UINT)layer);
+			ChangeCube((UINT)cube);
+		}
+
 	}
 
 	//Tri Key Input
@@ -125,5 +141,42 @@ void GetHeightDemo::CreateStaticMesh()
 	cube = new StaticMesh_Cube(cubeShader);
 	cube->GetTransform()->Scale(2, 2, 2);
 	cube->DiffuseMap(L"Floor.png");
-	// Todo. DiffuseMap Error?
+}
+
+void GetHeightDemo::ChangeCube(UINT inTexture)
+{
+	switch (inTexture)
+	{
+	case 0: cube->DiffuseMap(L"Floor.png"); break;
+	case 1: cube->DiffuseMap(L"Stones.png"); break;
+	case 2: cube->DiffuseMap(L"Bricks.png"); break;
+	case 3: cube->DiffuseMap(L"Box.png"); break;
+	case 4: cube->DiffuseMap(L"Red.png"); break;
+	case 5: cube->DiffuseMap(L"Yellow.png"); break;
+	case 6: cube->DiffuseMap(L"Magenta.png"); break;
+	case 7: cube->DiffuseMap(L"Blue.png"); break;
+	}
+
+}
+
+void GetHeightDemo::ChangeTexture(UINT inBase, UINT inLayer)
+{
+	switch (inBase)
+	{
+	case 0: terrain->BaseMap(L"Terrain/Dirt2.png"); break;
+	case 1: terrain->BaseMap(L"Terrain/Dirt (Grass).jpg"); break;
+	case 2: terrain->BaseMap(L"Terrain/Grass (Meadows).jpg"); break;
+	case 3: terrain->BaseMap(L"Terrain/Grass (Rocky).jpg"); break;
+	case 4: terrain->BaseMap(L"Terrain/Grass (Muddy).jpg"); break;
+	}
+
+	switch (inLayer)
+	{
+	case 0: terrain->LayerMap(L"Terrain/Cliff (Layered Rock).jpg"); break;
+	case 1: terrain->LayerMap(L"Terrain/Cliff (Grassy).jpg"); break;
+	case 2: terrain->LayerMap(L"Terrain/Cliff (Sandstone).jpg"); break;
+	case 3: terrain->LayerMap(L"Terrain/Dirt (Grass).jpg"); break;
+	case 4: terrain->LayerMap(L"Terrain/Grass (Hill).jpg"); break;
+	}
+
 }

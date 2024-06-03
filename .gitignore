@@ -22,9 +22,6 @@
 # Mono auto generated files
 mono_crash.*
 
-# Textures
-_Textures/
-
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/

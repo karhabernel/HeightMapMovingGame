@@ -15,6 +15,8 @@ public:
 
 private:
 	void CreateStaticMesh();
+	void ChangeCube(UINT inTexture);
+	void ChangeTexture(UINT inBase, UINT inLayer);
 
 private:
 	struct Vertex
@@ -34,4 +36,8 @@ private:
 
 	Vector3 position = Vector3(105, 0, 100);
 	Vector3 lightDirection = Vector3(-1, -1, 1);
+
+	UINT baseMap = 0;
+	UINT layerMap = 0;
+	UINT alphaMAp = 0;
 };
