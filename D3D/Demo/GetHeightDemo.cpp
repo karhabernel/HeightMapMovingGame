@@ -9,10 +9,13 @@ void GetHeightDemo::Initialize()
 
 	shader = new Shader(L"10_Terrain.fxo");
 	cubeShader = new Shader(L"13_StaticMesh.fxo");
+
 	terrain = new Terrain(shader, L"Terrain/Gray256.png");
 	terrain->BaseMap(L"Terrain/Dirt2.png");
 	terrain->LayerMap(L"Terrain/Cliff (Layered Rock).jpg");
 	terrain->AlphaMap(L"Terrain/Gray256.png");
+
+	sky = new Sky(L"Environment/Mountain1024.dds");
 
 
 
@@ -43,6 +46,7 @@ void GetHeightDemo::Destroy()
 	SafeDelete(terrain);
 
 	SafeDelete(cube);
+	SafeDelete(sky);
 
 	//SafeDelete(triShader);
 	//SafeRelease(vertexBuffer);
@@ -52,10 +56,15 @@ void GetHeightDemo::Update()
 {
 	//Terrain Paramters
 	{
-		static int pass = shader->PassCount() - 1;
-		ImGui::SliderInt("Pass", &pass, 0, shader->PassCount() - 1);
-		terrain->Pass() = pass;
+		//static int pass = shader->PassCount() - 1;
+		//ImGui::SliderInt("Pass", &pass, 0, shader->PassCount() - 1);
+		//terrain->Pass() = pass;
 
+		static int pass2 = sky->GetShader()->PassCount() - 1;
+		ImGui::InputInt("Sky Pass", &pass2);
+		pass2 %= sky->GetShader()->PassCount();
+		sky->Pass(pass2);
+		sky->Update();
 		static float tile = 4.f;
 		ImGui::SliderFloat("Tile", &tile, 1, 10);
 		terrain->Tile(tile);
@@ -71,16 +80,22 @@ void GetHeightDemo::Update()
 
 		static int base;
 		static int layer;
+		static int height;
 		static int cube;
+		static int skyTexture;
 		ImGui::SliderInt("BaseMap", &base, 0, 4);
 		ImGui::SliderInt("LayerMap", &layer, 0, 4);
+		ImGui::SliderInt("HeightMap", &height, 0, 2);
 		ImGui::SliderInt("Cube", &cube, 0, 7);
+		ImGui::SliderInt("Sky", &skyTexture, 0, 4);
 		
 		if (ImGui::Button("Apply"))
 		{
-			ChangeTexture((UINT)base, (UINT)layer);
+			ChangeTexture((UINT)base, (UINT)layer, (UINT)height);
 			ChangeCube((UINT)cube);
+			ChangeSky((UINT)skyTexture);
 		}
+
 
 	}
 
@@ -115,12 +130,14 @@ void GetHeightDemo::Update()
 	}
 
 	
+
 	terrain->Update();
 	cube->Update();
 }
 
 void GetHeightDemo::Render()
 {
+	sky->Render();
 	terrain->Render();
 	cube->Render();
 
@@ -159,8 +176,22 @@ void GetHeightDemo::ChangeCube(UINT inTexture)
 
 }
 
-void GetHeightDemo::ChangeTexture(UINT inBase, UINT inLayer)
+void GetHeightDemo::ChangeTexture(UINT inBase, UINT inLayer, UINT inHeight)
 {
+	SafeDelete(terrain);
+	switch (inHeight)
+	{
+	case 0:	terrain = new Terrain(shader, L"Terrain/Gray256.png");
+		terrain->AlphaMap(L"Terrain/Gray256.png");
+		break;
+	case 1:terrain = new Terrain(shader, L"Terrain/HeightMap1.jpg");
+		terrain->AlphaMap(L"Terrain/HeightMap1.jpg");
+		break;
+	case 2:terrain = new Terrain(shader, L"Terrain/HeightMap2.jpg");
+		terrain->AlphaMap(L"Terrain/HeightMap2.jpg");
+		break;
+	}
+
 	switch (inBase)
 	{
 	case 0: terrain->BaseMap(L"Terrain/Dirt2.png"); break;
@@ -179,4 +210,18 @@ void GetHeightDemo::ChangeTexture(UINT inBase, UINT inLayer)
 	case 4: terrain->LayerMap(L"Terrain/Grass (Hill).jpg"); break;
 	}
 
+
+}
+
+void GetHeightDemo::ChangeSky(UINT inSky)
+{
+	SafeDelete(sky);
+	switch (inSky)
+	{
+	case 0:sky = new Sky(L"Environment/Mountain1024.dds"); break;
+	case 1:sky = new Sky(L"Environment/DesertCube1024.dds"); break;
+	case 2:sky = new Sky(L"Environment/GrassCube1024.dds"); break;
+	case 3:sky = new Sky(L"Environment/skymap.dds"); break;
+	case 4:sky = new Sky(L"Environment/SunsetCube1024.dds"); break;
+	}
 }

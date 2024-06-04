@@ -139,17 +139,25 @@ Vector3 Terrain::GetNormalData(Vector3 position)
 		Vector3 p[4];
 		for (UINT i = 0; i < 4; i++)
 			p[i] = vertices[index[i]].Normal;
-		// normal y, z를 사용해서 pitch회전에 대한 atan2 
 
 		float pitch = atan2(p[0].y, p[0].z);
 		float pitch2 = atan2(p[1].y, p[1].z);
 		float pitch3 = atan2(p[2].y, p[2].z);
 		float pitch4 = atan2(p[3].y, p[3].z);
-		//float roll = atan2(p[0].y, p[0].x);
-
+		
+		/*float roll = atan2(p[0].z, p[0].x);
+		float roll2 = atan2(p[1].z, p[1].x);
+		float roll3 = atan2(p[2].z, p[2].x);
+		float roll4 = atan2(p[3].z, p[3].x);
+		*/
 		pitch = (pitch + pitch2 + pitch3 + pitch4) / 4;
+		//roll = (roll + roll2 + roll3 + roll4) / 4;
 
-		return Vector3(-pitch, 0, 0);
+		//if (abs(pitch) > abs(roll))
+			return Vector3(-pitch, 0, 0);
+		//else
+			//return Vector3(0, 0, roll);
+		//int a;
 	}
 	 
 

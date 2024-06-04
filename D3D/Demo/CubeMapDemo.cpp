@@ -11,7 +11,7 @@ void CubeMapDemo::Initialize()
 	sDirection = shader->AsVector("LightDirection");
 
 	sky = new Sky(L"Environment/Mountain1024.dds");
-
+	  
 	CreateStaticMesh();
 
 	cubeMapShader = new Shader(L"14_CubeMap.fxo");

@@ -16,7 +16,8 @@ public:
 private:
 	void CreateStaticMesh();
 	void ChangeCube(UINT inTexture);
-	void ChangeTexture(UINT inBase, UINT inLayer);
+	void ChangeTexture(UINT inBase, UINT inLayer, UINT inHeight);
+	void ChangeSky(UINT inSky);
 
 private:
 	struct Vertex
@@ -29,7 +30,8 @@ private:
 	Shader* shader;
 	Shader* cubeShader;
 	Terrain* terrain;
-	
+	Sky* sky;
+
 	StaticMesh_Cube* cube;
 	//Shader* triShader;
 	//ID3D11Buffer* vertexBuffer;
