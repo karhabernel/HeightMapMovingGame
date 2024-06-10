@@ -3,6 +3,7 @@ GameTest.zip 내 GaemTest 바로가기를 통해 포트폴리오 내용 확인�
 <details>
     <summary>1. 기획</summary>
 
+업데이트중..
 
 
 </details>
@@ -17,6 +18,7 @@ GameTest.zip 내 GaemTest 바로가기를 통해 포트폴리오 내용 확인�
 <details>
     <summary>3. 큐브 구성</summary>
 
+업데이트중..
 
 
 </details>
@@ -25,6 +27,7 @@ GameTest.zip 내 GaemTest 바로가기를 통해 포트폴리오 내용 확인�
 <details>
     <summary>4. 기타</summary>
 
+업데이트중..
 
 
 </details>
