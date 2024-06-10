@@ -16,6 +16,7 @@ DX를 통해 지형과 큐브를 그리고, 큐브 아래의 지형 각도에 �
 
 </details>
 
+
 <details>
     <summary>2. 지형 구성</summary>
 
@@ -33,13 +34,21 @@ HeightMap으로 사용한 흑백 이미지
 
 </details>
 
+
 <details>
     <summary>3. 큐브 구성</summary>
+
+큐브는 한 텍스처를 여섯 개의 면에 투영하는 식으로 머티리얼 작업을 진행하였습니다.
+
+큐브 하단 사각형의 네 꼭짓점의 Pitch값을 구하기 위하여 atan2 함수를 사용하였습니다.
+
+Terrain에서 미리 작업해 둔 해당 지면 Vertex의 Normal Vector를 가져온 뒤, atan2 함수를 통해 pitch값을 구한 뒤, 큐브 하단 사각형 꼭짓점의 Pitch값을 전부 더하고 4로 나누어 평균값을 구했습니다.
 
 업데이트중..
 
 
 </details>
+
 
 
 <details>
