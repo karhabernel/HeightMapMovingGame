@@ -1,3 +1,5 @@
+![스크린샷 2024-06-11 014539](https://github.com/karhabernel/HeightMapMovingGame/assets/124255059/35e92bbd-b59c-4be3-a561-1fde3ca8602e)
+
 DX를 이용하여 제작한 지형에 따라 움직이는 큐브 게임입니다.
 ImGui 조작을 통해 큐브 텍스쳐, 지형, 지면 텍스쳐(타일, 높이에 따른 지형변화 포함), 하늘 텍스쳐 및 광원 방향의 조정이 가능합니다.
 
