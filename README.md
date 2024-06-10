@@ -21,9 +21,11 @@ DX를 통해 지형과 큐브를 그리고, 큐브 아래의 지형 각도에 �
 
 ![Dirt2](https://github.com/karhabernel/HeightMapMovingGame/assets/124255059/46ad99ab-2311-42f6-be87-dba7df212215)
 ![Cliff (Layered Rock) (2)](https://github.com/karhabernel/HeightMapMovingGame/assets/124255059/4d386fda-7a08-4caa-af87-194ad362ccdf)
+
 머티리얼 역할을 할 텍스처 2개
 
 ![Gray256](https://github.com/karhabernel/HeightMapMovingGame/assets/124255059/cd3cde4e-063c-4345-9963-6a44da0d161e)
+
 HeightMap으로 사용한 흑백 이미지
 
 
