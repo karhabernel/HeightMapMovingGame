@@ -37,32 +37,33 @@ HeightMap은 픽셀의 RGB 중 R값을 확인하여 R값이 높을수록(즉, �
 
 '''
 
-void Terrain::CreateVertexData()
-{
-	width = heightMap->GetWidth();
-	height = heightMap->GetHeight();
-	
-	vector<Color> pixels;
-	heightMap->ReadPixel(&pixels);
-
-	vertexCount = width * height;
-	vertices = new VertexTerrain[vertexCount];
-
-	for (UINT y = 0; y < height; y++)
+	void Terrain::CreateVertexData()
 	{
-		for (UINT x = 0; x < width; x++)
+		width = heightMap->GetWidth();
+		height = heightMap->GetHeight();
+		
+		vector<Color> pixels;
+		heightMap->ReadPixel(&pixels);	
+
+		vertexCount = width * height;
+		vertices = new VertexTerrain[vertexCount];
+
+		for (UINT y = 0; y < height; y++)
 		{
-			UINT index = width * y + x;
-			UINT reverse = width * (height - y - 1) + x;
+			for (UINT x = 0; x < width; x++)
+			{
+				UINT index = width * y + x;
+				UINT reverse = width * (height - y - 1) + x;	
 
-			vertices[index].Position.x = (float)x;
-			vertices[index].Position.y = pixels[reverse].r * 255.f / 10.f;
-			vertices[index].Position.z = (float)y;
+				vertices[index].Position.x = (float)x;
+				vertices[index].Position.y = pixels[reverse].r * 255.f / 10.f;
+				vertices[index].Position.z = (float)y;
 
-			vertices[index].Uv.x = x / ((float)width - 1);
-			vertices[index].Uv.y = 1 - (y / ((float)height - 1));
+				vertices[index].Uv.x = x / ((float)width - 1);
+				vertices[index].Uv.y = 1 - (y / ((float)height - 1));
+			}
 		}
-	}
+  	}
  
  '''
 
