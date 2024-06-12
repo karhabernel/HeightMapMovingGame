@@ -36,6 +36,7 @@ HeightMap으로 사용한 흑백 이미지
 HeightMap은 픽셀의 RGB 중 R값을 확인하여 R값이 높을수록(즉, 흰색일수록) 고도가 높아지도록 처리하였습니다.
 
 '''
+
 void Terrain::CreateVertexData()
 {
 	width = heightMap->GetWidth();
@@ -62,6 +63,7 @@ void Terrain::CreateVertexData()
 			vertices[index].Uv.y = 1 - (y / ((float)height - 1));
 		}
 	}
+ 
  '''
 
 
@@ -78,6 +80,7 @@ void Terrain::CreateVertexData()
 Terrain에서 미리 작업해 둔 해당 지면 Vertex의 Normal Vector 값을 가져온 뒤, atan2 함수를 통해 pitch값을 구한 뒤, 큐브 하단 사각형 꼭짓점의 Pitch값을 전부 더하고 4로 나누어 평균값을 구했습니다.
 
 '''
+
 		Vector3 p[4];
 		for (UINT i = 0; i < 4; i++)
 			p[i] = vertices[index[i]].Normal;
@@ -90,6 +93,7 @@ Terrain에서 미리 작업해 둔 해당 지면 Vertex의 Normal Vector 값을 
 		pitch = (pitch + pitch2 + pitch3 + pitch4) / 4;
 
 		return Vector3(-pitch, 0, 0);
+  
   '''
 
 
